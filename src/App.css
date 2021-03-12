@@ -1,0 +1,8 @@
+@import 'antd/dist/antd.css';
+
+.sider-padding {
+  padding: 0px 8px;
+  height: 100vh;
+  overflow: auto;
+  min-width: 332px;
+}
