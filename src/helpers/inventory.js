@@ -65,7 +65,7 @@ const goShoppin = (cart, shoppingList, datas) => {
     amountInCart = getAmountInCart(beer, cart);
     let remaining = desiredAmount - amountInCart;
     while (remaining > 0) {
-      const theTypes = byType("mixed", datas);
+      const theTypes = byType("mixed", datas).concat(byType("four", datas)).concat(byType("single", datas));
       const beerCandidates = byBeer(beer, theTypes).sort(sortByKey("quantity")).reverse();
 
       if (beerCandidates.length === 0) {
