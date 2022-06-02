@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Button, List, Space, Typography } from "antd";
+import { Button, List, Space, Popover, Typography } from "antd";
+import { InfoCircleOutlined } from "@ant-design/icons";
 import { StopOutlined } from "@ant-design/icons";
 import { byTitle } from "helpers/inventory";
 import { selectByTitle, selectCart } from "store/selectors";
@@ -7,6 +8,12 @@ import { useStore } from "store";
 import { ADD_TO_CART, REMOVE_FROM_CART, REMOVE_FROM_LIST } from "store/actions";
 
 const { Text, Title } = Typography;
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})
 
 const Product = ({ title }) => {
   const { state, dispatch } = useStore();
@@ -58,7 +65,9 @@ const Product = ({ title }) => {
 
   return (
     <Space direction="vertical" style={{ width: "100%", padding: "8px 16px" }}>
-      <Title level={5}>{title}</Title>
+      <Space><Title level={5}>{title} - {formatter.format(beers[0].price)}</Title>
+        {beers[0].description && <Popover title={beers[0].description}><InfoCircleOutlined style={{ color: "#1890ff" }}/></Popover>}
+      </Space>
       <List
         grid={{ gutter: 8, column: getColumnCount(beers) }}
         dataSource={beers}

@@ -8,7 +8,7 @@ const CartItem = ({ beer, quantity }) => {
   const { dispatch } = useStore();
 
   const onInputChange = e => {
-    const quantity = parseInt(e.currentTarget.value);
+    const quantity = e;
     dispatch({ type: GO_SHOP, payload: { beer, quantity }});
   };
 
@@ -21,7 +21,7 @@ const CartItem = ({ beer, quantity }) => {
         style={{ width: 64 }}
         maxLength={3}
         defaultValue={0}
-        onBlur={onInputChange}
+        onChange={onInputChange}
         value={quantity}
       />
       <Text type={textType}>x {beer}</Text>

@@ -13,7 +13,7 @@ const titleStyle = {
   textTransform: "capitalize",
 };
 
-const types = ["mixed", "case", "four", "six", "twelve", "single", "merch", "unknown"];
+const types = ["mixed", "four", "six", "single", "coffee", "seltzer", "merch"];
 
 function App() {
   const { state } = useStore();

@@ -57,6 +57,7 @@ const getAmountInCart = ((beer, cart) => {
 const goShoppin = (cart, shoppingList, datas) => {
   const newCart = [...cart];
   let amountInCart = 0;
+
   // for each beer in shopping list
   shoppingList.forEach(listItem => {
     // get amount from cart
@@ -64,6 +65,7 @@ const goShoppin = (cart, shoppingList, datas) => {
     let desiredAmount = parseInt(listItem["quantity"]);
     amountInCart = getAmountInCart(beer, cart);
     let remaining = desiredAmount - amountInCart;
+
     while (remaining > 0) {
       const theTypes = byType("mixed", datas).concat(byType("four", datas)).concat(byType("single", datas));
       const beerCandidates = byBeer(beer, theTypes).sort(sortByKey("quantity")).reverse();
